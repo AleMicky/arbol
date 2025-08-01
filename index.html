@@ -2,200 +2,238 @@
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <title>Árbol Jerárquico - Veterinaria</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: 'Segoe UI', sans-serif;
-            background: url('./assets/arbol.png') no-repeat center center fixed;
-            background-size: cover;
-            color: white;
-            text-align: center;
-        }
+  <meta charset="UTF-8" />
+  <title>Árbol Jerárquico - Veterinaria</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: url('./assets/arbol.png') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+      text-align: center;
+    }
 
-        h2 {
-            background: rgba(0, 0, 0, 0.6);
-            padding: 1rem;
-            margin: 0;
-            font-size: 1.8rem;
-        }
+    h2 {
+      background: rgba(0, 0, 0, 0.6);
+      padding: 1rem;
+      margin: 0;
+      font-size: 1.8rem;
+    }
 
-        .tree {
-            padding: 40px 10px;
-            background: rgba(0, 0, 0, 0.5);
-        }
+    .tree {
+      padding: 40px 10px;
+      background: rgba(0, 0, 0, 0.5);
+    }
 
-        .tree ul {
-            padding-top: 20px;
-            position: relative;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
+    .tree ul {
+      padding-top: 20px;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
 
-        .tree li {
-            list-style-type: none;
-            text-align: center;
-            position: relative;
-            padding: 20px 5px 0 5px;
-        }
+    .tree li {
+      list-style-type: none;
+      text-align: center;
+      position: relative;
+      padding: 20px 5px 0 5px;
+      animation: fadeIn 0.8s ease-in;
+      animation-fill-mode: both;
+    }
 
-        .tree li::before,
-        .tree li::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            border-top: 2px solid #ccc;
-            width: 50%;
-            height: 20px;
-        }
+    .tree li:nth-child(1) {
+      animation-delay: 0.2s;
+    }
 
-        .tree li::before {
-            right: 50%;
-        }
+    .tree li:nth-child(2) {
+      animation-delay: 0.4s;
+    }
 
-        .tree li::after {
-            left: 50%;
-            border-left: 2px solid #ccc;
-        }
+    .tree li:nth-child(3) {
+      animation-delay: 0.6s;
+    }
 
-        .tree li:only-child::before,
-        .tree li:only-child::after {
-            display: none;
-        }
+    .tree li:nth-child(4) {
+      animation-delay: 0.8s;
+    }
 
-        .tree li:first-child::before,
-        .tree li:last-child::after {
-            border: none;
-        }
+    .tree li::before,
+    .tree li::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      border-top: 2px solid #ccc;
+      width: 50%;
+      height: 20px;
+      animation: lineGrow 1s ease-in-out forwards;
+    }
 
-        .tree li:last-child::before {
-            border-right: 2px solid #ccc;
-            border-radius: 0 5px 0 0;
-        }
+    .tree li::before {
+      right: 50%;
+    }
 
-        .tree li:first-child::after {
-            border-radius: 5px 0 0 0;
-        }
+    .tree li::after {
+      left: 50%;
+      border-left: 2px solid #ccc;
+    }
 
-        .node {
-            display: inline-block;
-            padding: 10px 20px;
-            border-radius: 8px;
-            font-weight: bold;
-            max-width: 240px;
-            background: rgba(0, 0, 0, 0.7);
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
-            transition: all 0.3s;
-        }
+    .tree li:only-child::before,
+    .tree li:only-child::after {
+      display: none;
+    }
 
-        .central {
-            background-color: rgba(230, 57, 70, 0.9);
-        }
+    .tree li:first-child::before,
+    .tree li:last-child::after {
+      border: none;
+    }
 
-        .causa {
-            background-color: rgba(69, 123, 157, 0.9);
-        }
+    .tree li:last-child::before {
+      border-right: 2px solid #ccc;
+      border-radius: 0 5px 0 0;
+    }
 
-        .consecuencia {
-            background-color: rgba(29, 53, 87, 0.9);
-        }
+    .tree li:first-child::after {
+      border-radius: 5px 0 0 0;
+    }
 
-        .node:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
-        }
+    .node {
+      display: inline-block;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: bold;
+      max-width: 240px;
+      background: rgba(0, 0, 0, 0.7);
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+      transition: all 0.3s;
+      opacity: 0;
+      animation: appear 1s ease forwards;
+    }
 
-        @media (max-width: 768px) {
-            .tree ul {
-                flex-direction: column;
-                align-items: center;
-            }
-        }
-    </style>
+    .central {
+      background-color: rgba(230, 57, 70, 0.9);
+    }
+
+    .causa {
+      background-color: rgba(69, 123, 157, 0.9);
+    }
+
+    .consecuencia {
+      background-color: rgba(29, 53, 87, 0.9);
+    }
+
+    .node:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+    }
+
+    @keyframes appear {
+      0% {
+        transform: scale(0.8);
+        opacity: 0;
+      }
+
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes lineGrow {
+      from {
+        width: 0;
+      }
+
+      to {
+        width: 50%;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .tree ul {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+
+    footer {
+      background: rgba(0, 0, 0, 0.6);
+      padding: 10px;
+      font-size: 0.9rem;
+    }
+  </style>
 </head>
 
 <body>
+  <h2>🌳 Árbol Jerárquico del Problema - Clínicas Veterinarias</h2>
 
-    <h2>🌳 Árbol Jerárquico del Problema - Clínicas Veterinarias</h2>
-
-    <div class="tree">
+  <div class="tree">
+    <ul>
+      <li>
+        <div class="node central">🔴 Gestión ineficiente de atención y control veterinario</div>
         <ul>
-            <li>
-                <div class="node central">🔴 Gestión ineficiente de atención y control veterinario</div>
-                <ul>
-                    <li>
-                        <div class="node causa">📄 Falta de digitalización</div>
-                        <ul>
-                            <li>
-                                <div class="node causa">📝 Registros en papel</div>
-                            </li>
-                            <li>
-                                <div class="node causa">🚫 Dificultad acceso a historiales</div>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <div class="node causa">📅 Sin sistema de turnos</div>
-                        <ul>
-                            <li>
-                                <div class="node causa">⏳ Largas filas</div>
-                            </li>
-                            <li>
-                                <div class="node causa">💢 Congestión</div>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <div class="node causa">💊 Control deficiente de insumos</div>
-                        <ul>
-                            <li>
-                                <div class="node causa">⚠️ Desabastecimiento</div>
-                            </li>
-                            <li>
-                                <div class="node causa">📦 Vencimiento</div>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <div class="node causa">📞 Comunicación deficiente</div>
-                        <ul>
-                            <li>
-                                <div class="node causa">🔕 Sin recordatorios</div>
-                            </li>
-                            <li>
-                                <div class="node causa">❓ Desinformación</div>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <div class="node consecuencia">🔺 Consecuencias</div>
-                        <ul>
-                            <li>
-                                <div class="node consecuencia">❌ Pérdida de clientes</div>
-                            </li>
-                            <li>
-                                <div class="node consecuencia">🐶 Riesgos en salud</div>
-                            </li>
-                            <li>
-                                <div class="node consecuencia">📋 Carga administrativa</div>
-                            </li>
-                            <li>
-                                <div class="node consecuencia">💔 Falta de fidelización</div>
-                            </li>
-                            <li>
-                                <div class="node consecuencia">⚙️ Ineficiencia operativa</div>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
-        </ul>
-    </div>
+          <!-- CAUSAS DIRECTAS -->
+          <li>
+            <div class="node causa">📄 Falta de digitalización</div>
+            <ul>
+              <li><div class="node causa">📝 Registros en papel</div></li>
+              <li><div class="node causa">🚫 Dificultad acceso a historiales</div></li>
+            </ul>
+          </li>
+          <li>
+            <div class="node causa">📅 Sin sistema de turnos</div>
+            <ul>
+              <li><div class="node causa">⏳ Largas filas</div></li>
+              <li><div class="node causa">💢 Congestión</div></li>
+            </ul>
+          </li>
+          <li>
+            <div class="node causa">💊 Control deficiente de insumos</div>
+            <ul>
+              <li><div class="node causa">⚠️ Desabastecimiento</div></li>
+              <li><div class="node causa">📦 Vencimiento</div></li>
+            </ul>
+          </li>
+          <li>
+            <div class="node causa">📞 Comunicación deficiente</div>
+            <ul>
+              <li><div class="node causa">🔕 Sin recordatorios</div></li>
+              <li><div class="node causa">❓ Desinformación</div></li>
+            </ul>
+          </li>
 
+          <!-- CONSECUENCIAS -->
+          <li>
+            <div class="node consecuencia">🔺 Consecuencias</div>
+            <ul>
+              <li><div class="node consecuencia">❌ Pérdida de clientes</div></li>
+              <li><div class="node consecuencia">🐶 Riesgos en salud</div></li>
+              <li><div class="node consecuencia">📋 Carga administrativa</div></li>
+              <li><div class="node consecuencia">💔 Falta de fidelización</div></li>
+              <li><div class="node consecuencia">⚙️ Ineficiencia operativa</div></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <footer>
+    <p>Integrantes: Miguel Alejandro Mamani Villegas, Cesar Hector Prado Vallejo, Edson Azurduy, Luis Terceros Gutierrez</p>
+  </footer>
 </body>
-<footer>
-    <p>Integrantes: Miguel Alejandro Mamani Villegas, Cesar Hector Prado Vallejo, Edson Azurduy , Luis Terceros Gutierrez </p>
 
 </html>
