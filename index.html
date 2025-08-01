@@ -180,56 +180,71 @@
 <body>
   <h2>🌳 Árbol Jerárquico del Problema - Clínicas Veterinarias</h2>
 
-  <div class="tree">
+<div class="tree">
     <ul>
-      <li>
-        <div class="node central">🔴 Gestión ineficiente de atención y control veterinario</div>
-        <ul>
-          <!-- CAUSAS DIRECTAS -->
-          <li>
-            <div class="node causa">📄 Falta de digitalización</div>
-            <ul>
-              <li><div class="node causa">📝 Registros en papel</div></li>
-              <li><div class="node causa">🚫 Dificultad acceso a historiales</div></li>
-            </ul>
-          </li>
-          <li>
-            <div class="node causa">📅 Sin sistema de turnos</div>
-            <ul>
-              <li><div class="node causa">⏳ Largas filas</div></li>
-              <li><div class="node causa">💢 Congestión</div></li>
-            </ul>
-          </li>
-          <li>
-            <div class="node causa">💊 Control deficiente de insumos</div>
-            <ul>
-              <li><div class="node causa">⚠️ Desabastecimiento</div></li>
-              <li><div class="node causa">📦 Vencimiento</div></li>
-            </ul>
-          </li>
-          <li>
-            <div class="node causa">📞 Comunicación deficiente</div>
-            <ul>
-              <li><div class="node causa">🔕 Sin recordatorios</div></li>
-              <li><div class="node causa">❓ Desinformación</div></li>
-            </ul>
-          </li>
+        <li>
+            <!-- PROBLEMA CENTRAL -->
+            <div class="node central">🔴 Gestión ineficiente de atención y control veterinario</div>
 
-          <!-- CONSECUENCIAS -->
-          <li>
-            <div class="node consecuencia">🔺 Consecuencias</div>
+            <!-- Agrupación de causas y consecuencias -->
             <ul>
-              <li><div class="node consecuencia">❌ Pérdida de clientes</div></li>
-              <li><div class="node consecuencia">🐶 Riesgos en salud</div></li>
-              <li><div class="node consecuencia">📋 Carga administrativa</div></li>
-              <li><div class="node consecuencia">💔 Falta de fidelización</div></li>
-              <li><div class="node consecuencia">⚙️ Ineficiencia operativa</div></li>
+                <!-- GRUPO: CAUSAS DIRECTAS -->
+                <li>
+                    <div class="node causa">🔻 Causas directas</div>
+                    <ul>
+                        <!-- CAUSA 1 -->
+                        <li>
+                            <div class="node causa">📄 Falta de digitalización</div>
+                            <ul>
+                                <li><div class="node causa">📝 Registros en papel</div></li>
+                                <li><div class="node causa">🚫 Dificultad de acceso al historial</div></li>
+                            </ul>
+                        </li>
+
+                        <!-- CAUSA 2 -->
+                        <li>
+                            <div class="node causa">📅 Sin sistema de turnos</div>
+                            <ul>
+                                <li><div class="node causa">⏳ Largas filas</div></li>
+                                <li><div class="node causa">💢 Congestión en la atención</div></li>
+                            </ul>
+                        </li>
+
+                        <!-- CAUSA 3 -->
+                        <li>
+                            <div class="node causa">💊 Control deficiente de insumos</div>
+                            <ul>
+                                <li><div class="node causa">⚠️ Desabastecimiento</div></li>
+                                <li><div class="node causa">📦 Vencimiento de productos</div></li>
+                            </ul>
+                        </li>
+
+                        <!-- CAUSA 4 -->
+                        <li>
+                            <div class="node causa">📞 Comunicación deficiente</div>
+                            <ul>
+                                <li><div class="node causa">🔕 Sin recordatorios</div></li>
+                                <li><div class="node causa">❓ Desinformación sobre cuidados</div></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+
+                <!-- GRUPO: CONSECUENCIAS -->
+                <li>
+                    <div class="node consecuencia">🔺 Consecuencias</div>
+                    <ul>
+                        <li><div class="node consecuencia">❌ Pérdida de clientes</div></li>
+                        <li><div class="node consecuencia">🐶 Riesgos en salud de mascotas</div></li>
+                        <li><div class="node consecuencia">📋 Mayor carga administrativa</div></li>
+                        <li><div class="node consecuencia">💔 Falta de fidelización</div></li>
+                        <li><div class="node consecuencia">⚙️ Ineficiencia operativa general</div></li>
+                    </ul>
+                </li>
             </ul>
-          </li>
-        </ul>
-      </li>
+        </li>
     </ul>
-  </div>
+</div>
 
   <footer>
     <p>Integrantes: Miguel Alejandro Mamani Villegas, Cesar Hector Prado Vallejo, Edson Azurduy, Luis Terceros Gutierrez</p>
